@@ -1,5 +1,6 @@
-﻿using System;
+﻿using My_Assets.Scrips.Player_Module;
 using My_Assets.Scrips.Utyles_Module;
+using UnityEngine;
 
 namespace My_Assets.Scrips.Input_Module
 {
@@ -20,12 +21,14 @@ namespace My_Assets.Scrips.Input_Module
 
         private void OnEnable()
         {
+            inputAction.Enable();
             inputAction.Player.Enable();
             inputAction.UI.Enable();
         }
 
         private void OnDisable()
         {
+            inputAction.Disable();
             inputAction.Player.Disable();
             inputAction.UI.Disable();
         }
@@ -43,7 +46,14 @@ namespace My_Assets.Scrips.Input_Module
 
         private void InitializeInputCallbacks()
         {
+            if (!PlayerManager.Instance)
+            {
+                Debug.Log("Here");
+            }
             
+            Debug.Log("Again " + PlayerManager.Instance.GetController().gameObject.name);
+            inputAction.Player.Movement.performed += PlayerManager.Instance.GetController().OnMovementStarted;
+            inputAction.Player.Movement.canceled += PlayerManager.Instance.GetController().OnMovementEnded;
         }
         
     }
