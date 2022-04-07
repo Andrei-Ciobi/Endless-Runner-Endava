@@ -8,9 +8,7 @@ namespace My_Assets.Scrips.Player_Module
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float moveDistance;
-        [SerializeField] private float speed;
-        [SerializeField] private float jumpHeight;
+        [SerializeField] private PlayerMovementData movementData;
 
         private Rigidbody playerRigidbody;
         private bool isMoveing;
@@ -39,7 +37,7 @@ namespace My_Assets.Scrips.Player_Module
             var endPosition = transform.position;
             var inputDirection = (int) moveDirection.x;
             var direction = transform.right * inputDirection;
-            endPosition += direction * moveDistance;
+            endPosition += direction * movementData.GetMoveDistance();
 
             StartCoroutine(SmoothMovement(endPosition));
 
@@ -51,7 +49,7 @@ namespace My_Assets.Scrips.Player_Module
                 return;
             
             // Calculate the jump force required to reach the given height
-            var jumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y);
+            var jumpForce = Mathf.Sqrt(movementData.GetJumpHeight() * -2 * Physics.gravity.y);
             
             var direction = Vector3.up * jumpForce;
             playerRigidbody.AddForce(direction, ForceMode.VelocityChange);
@@ -68,7 +66,7 @@ namespace My_Assets.Scrips.Player_Module
             var time = 0f;
             while (Math.Abs(transform.position.x - endPosition.x) > .15f)
             {
-                var newPosition = Vector3.Lerp(startPosition, endPosition, time * speed); 
+                var newPosition = Vector3.Lerp(startPosition, endPosition, time * movementData.GetSpeed()); 
                 playerRigidbody.MovePosition(newPosition);
                 time += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
