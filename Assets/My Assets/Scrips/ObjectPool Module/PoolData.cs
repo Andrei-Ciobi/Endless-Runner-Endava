@@ -9,6 +9,8 @@ namespace My_Assets.Scrips.ObjectPool_Module
     {
         [SerializeField] private ObjectPoolType type;
         [SerializeField] private int sizeOfPool;
+        [SerializeField] private float spaceBetween;
+        [SerializeField] private int batchSize;
         [SerializeField] private List<GameObject> sampleObjects;
 
 
@@ -20,6 +22,16 @@ namespace My_Assets.Scrips.ObjectPool_Module
         public int GetSizeOfPool()
         {
             return sizeOfPool;
+        }
+
+        public float GetSpaceBetween()
+        {
+            return spaceBetween;
+        }
+
+        public float GetBatchSize()
+        {
+            return batchSize;
         }
 
         public List<GameObject> GetSampleObjects()

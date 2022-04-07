@@ -5,16 +5,14 @@ namespace My_Assets.Scrips.ObjectPool_Module
 {
     public class ObjectPool
     {
-        private readonly List<GameObject> sampleObjects;
-        private readonly int sizeOfPool;
+        private readonly PoolData poolData;
         private readonly Transform poolParent;
 
         private List<GameObject> pooledObjects;
 
-        public ObjectPool(List<GameObject> sampleObjects, int sizeOfPool, Transform poolParent)
+        public ObjectPool(Transform poolParent, PoolData poolData)
         {
-            this.sampleObjects = sampleObjects;
-            this.sizeOfPool = sizeOfPool;
+            this.poolData = poolData;
             this.poolParent = poolParent;
         }
 
@@ -32,6 +30,11 @@ namespace My_Assets.Scrips.ObjectPool_Module
             
             return availablePoolObjects[randomIndex];
         }
+
+        public PoolData GetPoolData()
+        {
+            return poolData;
+        }
         
         public void SendBackInPool(GameObject obj)
         {
@@ -46,11 +49,12 @@ namespace My_Assets.Scrips.ObjectPool_Module
         {
             pooledObjects = new List<GameObject>();
 
-            for (var i = 0; i < sizeOfPool; ++i)
+            for (var i = 0; i < poolData.GetSizeOfPool(); ++i)
             {
+                var sampleObjects = poolData.GetSampleObjects();
                 var randomIndex = Random.Range(0, sampleObjects.Count);
                 var obj = Object.Instantiate(sampleObjects[randomIndex], poolParent);
-                obj!.SetActive(true);
+                obj!.SetActive(false);
                 pooledObjects.Add(obj);
             }
         }

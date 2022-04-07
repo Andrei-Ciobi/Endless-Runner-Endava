@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
 
@@ -30,13 +31,17 @@ namespace My_Assets.Scrips.ObjectPool_Module
             return objectPools[type];
         }
 
+        public List<ObjectPool> GetAllObjectPools()
+        {
+            return objectPools.Values.ToList();
+        }
+
         private void InitializePools()
         {
             foreach (var set in poolDataList)
             {
                 var poolData = set.GetValue();
-                var objPool = new ObjectPool(poolData.GetSampleObjects(), poolData.GetSizeOfPool(),
-                    set.GetKey());
+                var objPool = new ObjectPool(set.GetKey(), poolData);
                 
                 objPool.Initialize();
                 objectPools.Add(poolData.GetObjectPoolType(), objPool);

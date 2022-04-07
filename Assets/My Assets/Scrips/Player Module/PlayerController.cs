@@ -64,7 +64,7 @@ namespace My_Assets.Scrips.Player_Module
         {
             var startPosition = transform.position;
             var time = 0f;
-            while (Math.Abs(transform.position.x - endPosition.x) > .15f)
+            while (Math.Abs(transform.position.x - endPosition.x) > .01f)
             {
                 var newPosition = Vector3.Lerp(startPosition, endPosition, time * movementData.GetSpeed()); 
                 playerRigidbody.MovePosition(newPosition);

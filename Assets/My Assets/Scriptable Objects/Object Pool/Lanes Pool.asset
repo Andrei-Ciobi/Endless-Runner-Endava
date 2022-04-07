@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
-  m_Name: Coins Pool
+  m_Name: Lanes Pool
   m_EditorClassIdentifier: 
-  type: 0
-  sizeOfPool: 20
+  type: 1
+  sizeOfPool: 3
   sampleObjects:
   - {fileID: 1876626324744724927, guid: 8b59cf1d390c0bd4c86b755187308ada, type: 3}
