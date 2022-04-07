@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21742
+  m_Name: pb_Mesh22710
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1304,6 +1304,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a224a2db9ff86745bd8f2860fc6a20e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDistance: 1.5
-  speed: 10
-  jumpHeight: 5.22
+  movementData: {fileID: 11400000, guid: 6a6385786c10edc428b2bc374ccc252c, type: 2}
