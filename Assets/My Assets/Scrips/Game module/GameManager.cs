@@ -9,6 +9,8 @@ namespace My_Assets.Scrips.Game_module
 {
     public class GameManager : MonoSingleton<GameManager>
     {
+        public bool IsGameOver => isGameOver;
+            
         [SerializeField] private float objectsSpeed;
         [SerializeField] private int numberOfLanes;
         [SerializeField] private List<SerializableSet<ObjectPoolType, Transform>> objectsTransform;

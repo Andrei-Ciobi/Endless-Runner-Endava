@@ -14,6 +14,7 @@ namespace My_Assets.Scrips.Player_Module
         private bool isMoveing;
         private bool groundedPlayer;
         private Vector2 moveDirection;
+        private float bonusJump;
 
         private void Awake()
         {
@@ -49,10 +50,21 @@ namespace My_Assets.Scrips.Player_Module
                 return;
             
             // Calculate the jump force required to reach the given height
-            var jumpForce = Mathf.Sqrt(movementData.GetJumpHeight() * -2 * Physics.gravity.y);
+            var jumpHeight = movementData.GetJumpHeight() + bonusJump;
+            var jumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y);
             
             var direction = Vector3.up * jumpForce;
             playerRigidbody.AddForce(direction, ForceMode.VelocityChange);
+        }
+
+        public void SetBonusJumpHeight(float value)
+        {
+            bonusJump = value;
+        }
+
+        public void ResetBonusJumpHeight()
+        {
+            bonusJump = 0f;
         }
 
         private void CheckForGrounded()

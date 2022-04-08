@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
+  m_Name: Abilities Pool
+  m_EditorClassIdentifier: 
+  type: 2
+  sizeOfPool: 50
+  spaceBetween: 22
+  batchSize: 15
+  sampleObjects:
+  - {fileID: 7267219970881478475, guid: 3ffbc4b72b7d29b468ca0c6aad199736, type: 3}

@@ -5,7 +5,7 @@
     {
         Obstacles = 0,
         Coins = 1,
-        PowerUps = 2,
+        Ability = 2,
         Lanes,
         StartLanes,
     }
