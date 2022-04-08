@@ -36,6 +36,14 @@ namespace My_Assets.Scrips.ObjectPool_Module
             return objectPools.Values.ToList();
         }
 
+        public void SendBackToPool(ObjectPoolType type, GameObject obj)
+        {
+            var objectPool = GetObjectPool(type);
+            objectPool.SendBackInPool(obj);
+        }
+        
+        
+
         private void InitializePools()
         {
             foreach (var set in poolDataList)

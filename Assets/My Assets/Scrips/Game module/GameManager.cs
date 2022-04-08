@@ -11,7 +11,6 @@ namespace My_Assets.Scrips.Game_module
     {
         [SerializeField] private float objectsSpeed;
         [SerializeField] private int numberOfLanes;
-        [SerializeField] private Transform laneReferencePoint;
         [SerializeField] private List<SerializableSet<ObjectPoolType, Transform>> objectsTransform;
 
         private bool isGameOver;
@@ -46,11 +45,10 @@ namespace My_Assets.Scrips.Game_module
                 SpawnGenericObject(type);
             }
         }
-
-
+        
         private void SpawnLanes()
         {
-            for (var i = numberOfLanes; i > 0; --i)
+            for (var i = numberOfLanes - 1; i >= 0; --i)
             {
                 var objectPool = PoolManager.Instance.GetObjectPool(ObjectPoolType.Lanes);
                 var objData = objectPool.GetPoolData();
@@ -59,15 +57,14 @@ namespace My_Assets.Scrips.Game_module
             
                 obj.SetActive(true);
                 obj.transform.parent = parent;
-                obj.transform.localPosition = laneReferencePoint.localPosition +
+                obj.transform.localPosition = objectsLastPosition[objData.GetObjectPoolType()] +
                                               new Vector3(-i * 3f, 0f, objData.GetSpaceBetween());
 
-                if (i == 1)
+                if (i == 0)
                 {
-                    objectsLastPosition[objData.GetObjectPoolType()] = obj.transform.localPosition;
-                    var lastPosition = obj.transform.localPosition;
-                    lastPosition.x = 0f;
-                    laneReferencePoint.localPosition = lastPosition;
+                    var pos = obj.transform.localPosition;
+                    pos.x = 0f;
+                    objectsLastPosition[objData.GetObjectPoolType()] = pos;
                 }
             }
         }
@@ -78,12 +75,15 @@ namespace My_Assets.Scrips.Game_module
             var objData = objectPool.GetPoolData();
             var obj = objectPool.GetPooledObject();
             var parent = objectsTransform.Find(set => set.GetKey() == objData.GetObjectPoolType()).GetValue();
-            
+
+            var r = Random.Range(0, numberOfLanes);
             obj.SetActive(true);
             obj.transform.parent = parent;
             obj.transform.localPosition = objectsLastPosition[objData.GetObjectPoolType()] +
-                                          new Vector3(0f, 0f, objData.GetSpaceBetween());
-            objectsLastPosition[objData.GetObjectPoolType()] = obj.transform.localPosition;
+                                          new Vector3(-r * 3f, 0f, objData.GetSpaceBetween());
+            var pos = obj.transform.localPosition;
+            pos.x = 0f;
+            objectsLastPosition[objData.GetObjectPoolType()] = pos;
         }
 
         private void InitializeLastPositions()

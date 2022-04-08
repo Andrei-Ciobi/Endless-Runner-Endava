@@ -7,6 +7,7 @@
         Coins = 1,
         PowerUps = 2,
         Lanes,
+        StartLanes,
     }
     
     public class AllEnums

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Obstacles Pool
   m_EditorClassIdentifier: 
   type: 0
-  sizeOfPool: 20
+  sizeOfPool: 100
+  spaceBetween: 10
+  batchSize: 20
   sampleObjects:
   - {fileID: 1876626324744724927, guid: 8b59cf1d390c0bd4c86b755187308ada, type: 3}

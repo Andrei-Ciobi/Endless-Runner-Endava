@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7349531670943944324}
   - component: {fileID: 5887290648811620974}
   - component: {fileID: 3479259614411904076}
-  - component: {fileID: 1843754594105805017}
-  m_Layer: 0
-  m_Name: PrototypeCube
-  m_TagString: Obstacles
+  - component: {fileID: 8387473103787573398}
+  m_Layer: 6
+  m_Name: Test lane
+  m_TagString: Lanes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1876626324744724927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.12, y: 2.1, z: -11.19}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 3, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8ef4907cff97dd1499675d4535bd4b0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1843754594105805017
+--- !u!54 &8387473103787573398
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
