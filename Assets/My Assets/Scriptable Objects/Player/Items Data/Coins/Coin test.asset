@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
-  m_Name: Obstacles Pool
+  m_Script: {fileID: 11500000, guid: 41ba06a9a671408190d4a45f768c8c68, type: 3}
+  m_Name: Coin test
   m_EditorClassIdentifier: 
-  type: 0
-  sizeOfPool: 100
-  spaceBetween: 25
-  batchSize: 20
-  sampleObjects:
-  - {fileID: 1876626324744724927, guid: 8b59cf1d390c0bd4c86b755187308ada, type: 3}
+  coinValue: 4

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
-  m_Name: Obstacles Pool
+  m_Name: Coins Pool
   m_EditorClassIdentifier: 
-  type: 0
-  sizeOfPool: 100
-  spaceBetween: 25
-  batchSize: 20
+  type: 1
+  sizeOfPool: 60
+  spaceBetween: 10
+  batchSize: 25
   sampleObjects:
-  - {fileID: 1876626324744724927, guid: 8b59cf1d390c0bd4c86b755187308ada, type: 3}
+  - {fileID: 7043643367168188485, guid: 8010af825e90cad4b8d6a48c559f5330, type: 3}

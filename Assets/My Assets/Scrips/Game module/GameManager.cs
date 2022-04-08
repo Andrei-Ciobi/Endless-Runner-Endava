@@ -116,6 +116,7 @@ namespace My_Assets.Scrips.Game_module
                 foreach (var parent in objectsTransform.Select(set => set.GetValue()))
                 {
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * Time.deltaTime));
+                    InventoryManager.Instance.UpdateCurrentRunScore(Time.deltaTime);
                 }
 
                 yield return null;
