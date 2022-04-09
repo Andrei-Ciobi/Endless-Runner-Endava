@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fc4450cd924019abeaf829c359266b, type: 3}
   m_Name: Prototype Inventory
   m_EditorClassIdentifier: 
-  highScore: 0
-  currentCoins: 0
+  highScore: 100.61625
+  currentCoins: 60

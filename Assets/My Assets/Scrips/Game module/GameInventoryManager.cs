@@ -35,9 +35,14 @@ namespace My_Assets.Scrips.Game_module
             gameData.UpdateCurrentCoins(currentRunCoins);
         }
         
-        private bool NewHighScore()
+        public bool NewHighScore()
         {
-            return currentRunScore > gameData.GetHighScore();
+            return currentRunScore >= gameData.GetHighScore();
+        }
+
+        public float GetCurrentRunScore()
+        {
+            return currentRunScore;
         }
         
         

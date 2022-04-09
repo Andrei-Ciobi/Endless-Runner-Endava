@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.ObjectPool_Module;
+using My_Assets.Scrips.UI_Module;
 using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
 
@@ -60,8 +61,7 @@ namespace My_Assets.Scrips.Game_module
             isGameOver = true;
             GameInputManager.Instance.DisablePlayerActionMap();
             GameInventoryManager.Instance.OnEndGame();
-            
-            //TO DO: logic for UI
+            UIManager.Instance.OnEndGame();
         }
         
         private void SpawnLanes()
@@ -131,6 +131,9 @@ namespace My_Assets.Scrips.Game_module
         {
             while (!isGameOver)
             {
+                if (UIManager.Instance.IsGamePaused)
+                    yield return null;
+                
                 foreach (var parent in objectsTransform.Select(set => set.GetValue()))
                 {
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * Time.deltaTime));
