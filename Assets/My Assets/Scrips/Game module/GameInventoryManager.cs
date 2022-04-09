@@ -29,6 +29,7 @@ namespace My_Assets.Scrips.Game_module
         {
             if (NewHighScore())
             {
+                currentRunScore = Mathf.Round(currentRunScore * 100f) / 100f;
                 gameData.SetHighScore(currentRunScore);
             }
             
@@ -43,6 +44,11 @@ namespace My_Assets.Scrips.Game_module
         public float GetCurrentRunScore()
         {
             return currentRunScore;
+        }
+
+        public int GetCurrentRunCoins()
+        {
+            return currentRunCoins;
         }
         
         

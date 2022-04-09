@@ -9,6 +9,7 @@ namespace My_Assets.Scrips.UI_Module
         public bool IsGamePaused => isGamePaused;
         [SerializeField] private BaseMenuUI pauseMenu;
         [SerializeField] private EndGameMenuUI endGameMenu;
+        [SerializeField] private PlayerUI playerUI;
 
         private bool isGamePaused;
         private void Awake()
@@ -33,8 +34,19 @@ namespace My_Assets.Scrips.UI_Module
         public void OnEndGame()
         {
             endGameMenu.gameObject.SetActive(true);
+            playerUI.gameObject.SetActive(false);
             endGameMenu.OnEndGame();
             PauseGame();
+        }
+
+        public void OnStartGame()
+        {
+            playerUI.gameObject.SetActive(true);
+        }
+
+        public PlayerUI GetPlayerUI()
+        {
+            return playerUI;
         }
 
         private void PauseGame()

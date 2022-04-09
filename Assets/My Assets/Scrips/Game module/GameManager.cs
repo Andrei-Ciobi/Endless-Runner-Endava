@@ -40,6 +40,7 @@ namespace My_Assets.Scrips.Game_module
             gameStarted = true;
             isGameOver = false;
             GameInputManager.Instance.EnablePlayerActionMap();
+            UIManager.Instance.OnStartGame();
             StartCoroutine(MoveObjects());
         }
 
@@ -133,12 +134,15 @@ namespace My_Assets.Scrips.Game_module
             {
                 if (UIManager.Instance.IsGamePaused)
                     yield return null;
-                
+
+                var time = Time.deltaTime;
                 foreach (var parent in objectsTransform.Select(set => set.GetValue()))
                 {
-                    parent.transform.Translate(-Vector3.forward * (objectsSpeed * Time.deltaTime));
-                    GameInventoryManager.Instance.UpdateCurrentRunScore(Time.deltaTime);
+                    parent.transform.Translate(-Vector3.forward * (objectsSpeed * time));
                 }
+                
+                GameInventoryManager.Instance.UpdateCurrentRunScore(time);
+                UIManager.Instance.GetPlayerUI().UpdateScore(GameInventoryManager.Instance.GetCurrentRunScore());
 
                 yield return null;
             }

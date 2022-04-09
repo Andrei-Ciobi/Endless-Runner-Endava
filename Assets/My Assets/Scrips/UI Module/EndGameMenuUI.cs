@@ -18,7 +18,7 @@ namespace My_Assets.Scrips.UI_Module
 
         private void SetScoreValue(float value)
         {
-            scoreValue.text = value.ToString();
+            scoreValue.text = value.ToString("F2");
         }
 
         private void SetScoreText(string text)
