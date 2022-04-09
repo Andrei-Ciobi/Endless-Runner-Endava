@@ -175,9 +175,17 @@ public class @GameInputAction : IInputActionCollection, IDisposable
             ""id"": ""ea586689-069c-4fa6-a39e-678a0ba8078c"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""LeftClick"",
                     ""type"": ""Button"",
                     ""id"": ""b6b291cf-1eb9-4a76-b066-1ee029a63271"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ef5669e-dd73-47db-bae1-a9f7b460e833"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -187,11 +195,22 @@ public class @GameInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""885412a3-a6f8-4e6c-b20b-e1a024286138"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4fbb817a-dcf8-4bff-8329-2668cdff1b50"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -206,7 +225,8 @@ public class @GameInputAction : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_UI_LeftClick = m_UI.FindAction("LeftClick", throwIfNotFound: true);
+        m_UI_MenuButton = m_UI.FindAction("MenuButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,12 +317,14 @@ public class @GameInputAction : IInputActionCollection, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Newaction;
+    private readonly InputAction m_UI_LeftClick;
+    private readonly InputAction m_UI_MenuButton;
     public struct UIActions
     {
         private @GameInputAction m_Wrapper;
         public UIActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+        public InputAction @LeftClick => m_Wrapper.m_UI_LeftClick;
+        public InputAction @MenuButton => m_Wrapper.m_UI_MenuButton;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -312,16 +334,22 @@ public class @GameInputAction : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
+                @LeftClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
+                @MenuButton.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuButton;
+                @MenuButton.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuButton;
+                @MenuButton.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMenuButton;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @MenuButton.started += instance.OnMenuButton;
+                @MenuButton.performed += instance.OnMenuButton;
+                @MenuButton.canceled += instance.OnMenuButton;
             }
         }
     }
@@ -333,6 +361,7 @@ public class @GameInputAction : IInputActionCollection, IDisposable
     }
     public interface IUIActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnMenuButton(InputAction.CallbackContext context);
     }
 }

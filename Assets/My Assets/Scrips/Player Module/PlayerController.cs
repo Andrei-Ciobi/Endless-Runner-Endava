@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using My_Assets.Scrips.Game_module;
+using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +16,7 @@ namespace My_Assets.Scrips.Player_Module
         private bool isMoveing;
         private bool groundedPlayer;
         private Vector2 moveDirection;
+        private float bonusJump;
 
         private void Awake()
         {
@@ -24,6 +27,13 @@ namespace My_Assets.Scrips.Player_Module
         private void FixedUpdate()
         {
             CheckForGrounded();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(!collision.gameObject.CompareTag(ObjectPoolType.Obstacles.ToString()))
+                return;
+            
+            GameManager.Instance.EndGame();
         }
 
         public void Movement(InputAction.CallbackContext context)
@@ -49,10 +59,21 @@ namespace My_Assets.Scrips.Player_Module
                 return;
             
             // Calculate the jump force required to reach the given height
-            var jumpForce = Mathf.Sqrt(movementData.GetJumpHeight() * -2 * Physics.gravity.y);
+            var jumpHeight = movementData.GetJumpHeight() + bonusJump;
+            var jumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y);
             
             var direction = Vector3.up * jumpForce;
             playerRigidbody.AddForce(direction, ForceMode.VelocityChange);
+        }
+
+        public void SetBonusJumpHeight(float value)
+        {
+            bonusJump = value;
+        }
+
+        public void ResetBonusJumpHeight()
+        {
+            bonusJump = 0f;
         }
 
         private void CheckForGrounded()
@@ -64,7 +85,7 @@ namespace My_Assets.Scrips.Player_Module
         {
             var startPosition = transform.position;
             var time = 0f;
-            while (Math.Abs(transform.position.x - endPosition.x) > .15f)
+            while (Math.Abs(transform.position.x - endPosition.x) > .01f && !GameManager.Instance.IsGameOver)
             {
                 var newPosition = Vector3.Lerp(startPosition, endPosition, time * movementData.GetSpeed()); 
                 playerRigidbody.MovePosition(newPosition);
@@ -73,5 +94,7 @@ namespace My_Assets.Scrips.Player_Module
             }
             isMoveing = false;
         }
+
+
     }
 }

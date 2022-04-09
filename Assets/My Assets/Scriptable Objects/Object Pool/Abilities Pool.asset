@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82cacb1a6484ff2adf56964f0e04ce6, type: 3}
-  m_Name: Prototype_Movement_Data
+  m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
+  m_Name: Abilities Pool
   m_EditorClassIdentifier: 
-  speed: 6
-  jumpHeight: 4
-  moveDistance: 3
+  type: 2
+  sizeOfPool: 50
+  spaceBetween: 22
+  batchSize: 15
+  sampleObjects:
+  - {fileID: 7267219970881478475, guid: 3ffbc4b72b7d29b468ca0c6aad199736, type: 3}

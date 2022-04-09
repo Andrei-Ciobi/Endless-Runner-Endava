@@ -162,9 +162,17 @@
             "id": "ea586689-069c-4fa6-a39e-678a0ba8078c",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "LeftClick",
                     "type": "Button",
                     "id": "b6b291cf-1eb9-4a76-b066-1ee029a63271",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MenuButton",
+                    "type": "Button",
+                    "id": "4ef5669e-dd73-47db-bae1-a9f7b460e833",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -174,11 +182,22 @@
                 {
                     "name": "",
                     "id": "885412a3-a6f8-4e6c-b20b-e1a024286138",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fbb817a-dcf8-4bff-8329-2668cdff1b50",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
