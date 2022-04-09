@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using My_Assets.Scrips.Game_module;
 using My_Assets.Scrips.ObjectPool_Module;
 using My_Assets.Scrips.Player_Module;

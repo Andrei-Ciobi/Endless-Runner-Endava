@@ -2,8 +2,8 @@
 
 namespace My_Assets.Scrips.Game_module
 {
-    [CreateAssetMenu(fileName = "New inventory data", menuName = "ScriptableObjects/Player/InventoryData", order = 0)]
-    public class InventoryData : ScriptableObject
+    [CreateAssetMenu(fileName = "New inventory data", menuName = "ScriptableObjects/Player/GameInventoryData", order = 0)]
+    public class GameInventoryData : ScriptableObject
     {
         [SerializeField] private float highScore;
         [SerializeField] private int currentCoins;

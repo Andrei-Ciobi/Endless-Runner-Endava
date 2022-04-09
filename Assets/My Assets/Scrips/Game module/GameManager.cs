@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.ObjectPool_Module;
 using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace My_Assets.Scrips.Game_module
         [SerializeField] private List<SerializableSet<ObjectPoolType, Transform>> objectsTransform;
 
         private bool isGameOver;
+        private bool gameStarted;
         private readonly Dictionary<ObjectPoolType, Vector3> objectsLastPosition = new Dictionary<ObjectPoolType, Vector3>();
 
         private void Awake()
@@ -27,12 +29,17 @@ namespace My_Assets.Scrips.Game_module
         {
             InitializeLastPositions();
             InitializeBatches();
-            StartCoroutine(MoveObjects());
         }
 
-        private void StartGame()
+        public void StartGame()
         {
+            if(gameStarted)
+                return;
+            
+            gameStarted = true;
             isGameOver = false;
+            GameInputManager.Instance.EnablePlayerActionMap();
+            StartCoroutine(MoveObjects());
         }
 
 
@@ -46,6 +53,15 @@ namespace My_Assets.Scrips.Game_module
             {
                 SpawnGenericObject(type);
             }
+        }
+
+        public void EndGame()
+        {
+            isGameOver = true;
+            GameInputManager.Instance.DisablePlayerActionMap();
+            GameInventoryManager.Instance.OnEndGame();
+            
+            //TO DO: logic for UI
         }
         
         private void SpawnLanes()
@@ -118,7 +134,7 @@ namespace My_Assets.Scrips.Game_module
                 foreach (var parent in objectsTransform.Select(set => set.GetValue()))
                 {
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * Time.deltaTime));
-                    InventoryManager.Instance.UpdateCurrentRunScore(Time.deltaTime);
+                    GameInventoryManager.Instance.UpdateCurrentRunScore(Time.deltaTime);
                 }
 
                 yield return null;

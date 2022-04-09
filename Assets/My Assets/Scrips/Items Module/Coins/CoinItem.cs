@@ -23,7 +23,7 @@ namespace My_Assets.Scrips.Items_Module.Coins
             if(!other.CompareTag("Player"))
                 return;
             
-            InventoryManager.Instance.UpdateCurrentRunCoins(coinData.GetCoinValue());
+            GameInventoryManager.Instance.UpdateCurrentRunCoins(coinData.GetCoinValue());
             PoolManager.Instance.SendBackToPool(ObjectPoolType.Coins, gameObject);
             GameManager.Instance.SpawnGameObject(ObjectPoolType.Coins);
         }

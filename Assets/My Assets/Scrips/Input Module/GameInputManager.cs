@@ -1,4 +1,5 @@
-﻿using My_Assets.Scrips.Player_Module;
+﻿using My_Assets.Scrips.Game_module;
+using My_Assets.Scrips.Player_Module;
 using My_Assets.Scrips.Utyles_Module;
 
 namespace My_Assets.Scrips.Input_Module
@@ -20,8 +21,6 @@ namespace My_Assets.Scrips.Input_Module
 
         private void OnEnable()
         {
-            inputAction.Enable();
-            inputAction.Player.Enable();
             inputAction.UI.Enable();
         }
 
@@ -47,6 +46,7 @@ namespace My_Assets.Scrips.Input_Module
         {
             inputAction.Player.Movement.performed += PlayerManager.Instance.GetController().Movement;
             inputAction.Player.Jump.performed += PlayerManager.Instance.GetController().Jump;
+            inputAction.UI.LeftClick.performed += _ => GameManager.Instance.StartGame();
         }
         
     }
