@@ -4,7 +4,9 @@ namespace My_Assets.Scrips.Abilities_Module
 {
     public abstract class BaseAbility : MonoBehaviour
     {
+        public bool IsActivated => activated;
         private Collider abilityCollider;
+        protected bool activated;
         
         protected void InitializeBaseAbility()
         {

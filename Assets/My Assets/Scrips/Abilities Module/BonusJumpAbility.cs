@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using My_Assets.Scrips.Game_module;
 using My_Assets.Scrips.ObjectPool_Module;
 using My_Assets.Scrips.Player_Module;
@@ -9,10 +10,10 @@ namespace My_Assets.Scrips.Abilities_Module
 {
     public class BonusJumpAbility : BaseAbility
     {
-        [SerializeField] private float bonusJump;
-        [SerializeField] private float duration;
+        [SerializeField] private BonusJumpAbilityData abilityData;
 
         private static bool running;
+
         private static bool forceStop;
         private MeshRenderer meshRenderer;
 
@@ -39,27 +40,27 @@ namespace My_Assets.Scrips.Abilities_Module
             {
                 yield return null;
             }
-            
+
             running = true;
+            activated = true;
             var currentTime = 0f;
             meshRenderer.enabled = false;
-            PlayerManager.Instance.GetController().SetBonusJumpHeight(bonusJump);
-            
-            while (currentTime <= duration && !GameManager.Instance.IsGameOver && !forceStop)
+            PlayerManager.Instance.GetController().SetBonusJumpHeight(abilityData.GetJumpHeight());
+
+            while (currentTime <= abilityData.GetDuration() && !GameManager.Instance.IsGameOver && !forceStop)
             {
                 currentTime += Time.deltaTime;
                 yield return null;
             }
 
             running = false;
+            activated = false;
             forceStop = false;
-            
+
             meshRenderer.enabled = true;
             PlayerManager.Instance.GetController().ResetBonusJumpHeight();
             PoolManager.Instance.SendBackToPool(ObjectPoolType.Ability, gameObject);
             GameManager.Instance.SpawnGameObject(ObjectPoolType.Ability);
         }
-        
-        
     }
 }
