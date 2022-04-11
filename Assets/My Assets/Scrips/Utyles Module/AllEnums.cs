@@ -9,7 +9,12 @@
         Lanes,
         StartLanes,
     }
-    
+
+    public enum MenuType
+    {
+        Pause,
+        EndGame,
+    }
     public class AllEnums
     {
         
