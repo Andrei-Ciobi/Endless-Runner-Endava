@@ -1,5 +1,4 @@
-﻿using System;
-using My_Assets.Scrips.Utyles_Module;
+﻿using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
 
 namespace My_Assets.Scrips.Player_Module
@@ -12,6 +11,18 @@ namespace My_Assets.Scrips.Player_Module
         private void Awake()
         {
             InitializeMonoSingleton();
+        }
+
+        public void OnStartGame()
+        {
+            var animator = controller.GetAnimator();
+            animator.SetBool(PlayerState.IsRunning.ToString(), true);
+        }
+
+        public void OnEndGame()
+        {
+            var animator = controller.GetAnimator();
+            animator.SetTrigger(PlayerState.Dead.ToString());
         }
 
         public PlayerController GetController()

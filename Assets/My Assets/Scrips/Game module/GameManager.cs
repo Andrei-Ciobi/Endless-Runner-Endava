@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.ObjectPool_Module;
+using My_Assets.Scrips.Player_Module;
 using My_Assets.Scrips.UI_Module;
 using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
@@ -39,6 +40,7 @@ namespace My_Assets.Scrips.Game_module
             isGameOver = false;
             GameInputManager.Instance.EnablePlayerActionMap();
             UIManager.Instance.OnStartGame();
+            PlayerManager.Instance.OnStartGame();
             StartCoroutine(MoveObjects());
         }
 
@@ -59,6 +61,7 @@ namespace My_Assets.Scrips.Game_module
         {
             isGameOver = true;
             GameInputManager.Instance.DisablePlayerActionMap();
+            PlayerManager.Instance.OnEndGame();
             GameInventoryManager.Instance.OnEndGame();
             UIManager.Instance.OnEndGame();
         }

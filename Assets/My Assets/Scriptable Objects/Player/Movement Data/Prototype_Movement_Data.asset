@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Prototype_Movement_Data
   m_EditorClassIdentifier: 
   speed: 6
-  jumpHeight: 2
+  jumpHeight: 2.5
   moveDistance: 3
+  resetJumpDelay: 0.2

@@ -11,6 +11,13 @@
         Ships = 5,
     }
 
+    public enum PlayerState
+    {
+        IsRunning,
+        Dead,
+        IsJumping,
+    }
+
     public enum MenuType
     {
         Pause,
