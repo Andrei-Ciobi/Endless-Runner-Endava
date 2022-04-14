@@ -6,8 +6,9 @@
         Obstacles = 0,
         Coins = 1,
         Ability = 2,
-        Lanes,
-        StartLanes,
+        Lanes = 3,
+        StartLanes = 4,
+        Ships = 5,
     }
 
     public enum MenuType

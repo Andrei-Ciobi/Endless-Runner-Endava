@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.ObjectPool_Module;
 using My_Assets.Scrips.UI_Module;
@@ -12,10 +11,9 @@ namespace My_Assets.Scrips.Game_module
     public class GameManager : MonoSingleton<GameManager>
     {
         public bool IsGameOver => isGameOver;
-            
-        [SerializeField] private float objectsSpeed;
+        
         [SerializeField] private int numberOfLanes;
-        [SerializeField] private List<SerializableSet<ObjectPoolType, Transform>> objectsTransform;
+        [SerializeField] private List<GameManagerSet<ObjectPoolType, Transform, float>> objectsTransform;
 
         private bool isGameOver;
         private bool gameStarted;
@@ -136,8 +134,10 @@ namespace My_Assets.Scrips.Game_module
                     yield return null;
 
                 var time = Time.deltaTime;
-                foreach (var parent in objectsTransform.Select(set => set.GetValue()))
+                foreach (var set in objectsTransform)
                 {
+                    var parent = set.GetValue();
+                    var objectsSpeed = set.GetSecondValue();
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * time));
                 }
                 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
-  m_Name: Lanes Pool
+  m_Name: Ships Pool
   m_EditorClassIdentifier: 
-  type: 3
-  sizeOfPool: 100
-  spaceBetween: 30
-  batchSize: 15
+  type: 5
+  sizeOfPool: 15
+  spaceBetween: 350
+  batchSize: 5
   sampleObjects:
-  - {fileID: 1876626324744724927, guid: 4294028332992cc49b52edab39cdcc19, type: 3}
-  - {fileID: 8388000019774487517, guid: 6cebcbbde6c63ff4cb69be53981e1089, type: 3}
-  - {fileID: 4361141670209098951, guid: 94be8175a2ee8d143841f68070763f9a, type: 3}
+  - {fileID: 963720990949011456, guid: ebb7e27b2a1904e4cbd5c51a0aa93d5d, type: 3}
+  - {fileID: 4184215260415500912, guid: c0c3ffff5ff73e14bad99d317d41ddc1, type: 3}
+  - {fileID: 7614731377330844083, guid: c3c29b56c3d10064786823cc2bc58fa7, type: 3}

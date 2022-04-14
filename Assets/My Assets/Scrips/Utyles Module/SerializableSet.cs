@@ -8,7 +8,6 @@ namespace My_Assets.Scrips.Utyles_Module
         [SerializeField] private TK key;
         [SerializeField] private TV value;
 
-
         public TK GetKey()
         {
             return key;
