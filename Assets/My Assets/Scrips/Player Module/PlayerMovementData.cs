@@ -8,6 +8,7 @@ namespace My_Assets.Scrips.Player_Module
         [SerializeField] private float speed;
         [SerializeField] private float jumpHeight;
         [SerializeField] private float moveDistance;
+        [SerializeField] [Range(0f, .5f)] private float resetJumpDelay;
 
         public float GetSpeed()
         {
@@ -22,6 +23,11 @@ namespace My_Assets.Scrips.Player_Module
         public float GetMoveDistance()
         {
             return moveDistance;
+        }
+
+        public float GetResetJumpDelay()
+        {
+            return resetJumpDelay;
         }
     }
 }

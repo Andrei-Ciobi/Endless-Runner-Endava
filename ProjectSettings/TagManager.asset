@@ -9,6 +9,8 @@ TagManager:
   - StartLanes
   - Coins
   - Ability
+  - Ships
+  - HorizontalShips
   layers:
   - Default
   - TransparentFX

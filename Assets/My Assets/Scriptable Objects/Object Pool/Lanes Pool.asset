@@ -18,3 +18,5 @@ MonoBehaviour:
   batchSize: 15
   sampleObjects:
   - {fileID: 1876626324744724927, guid: 4294028332992cc49b52edab39cdcc19, type: 3}
+  - {fileID: 8388000019774487517, guid: 6cebcbbde6c63ff4cb69be53981e1089, type: 3}
+  - {fileID: 4361141670209098951, guid: 94be8175a2ee8d143841f68070763f9a, type: 3}

@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.ObjectPool_Module;
+using My_Assets.Scrips.Player_Module;
 using My_Assets.Scrips.UI_Module;
 using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
@@ -12,10 +12,10 @@ namespace My_Assets.Scrips.Game_module
     public class GameManager : MonoSingleton<GameManager>
     {
         public bool IsGameOver => isGameOver;
-            
-        [SerializeField] private float objectsSpeed;
+
+        [SerializeField] [Range(.2f, 1.2f)] private float displayUIDelay;
         [SerializeField] private int numberOfLanes;
-        [SerializeField] private List<SerializableSet<ObjectPoolType, Transform>> objectsTransform;
+        [SerializeField] private List<GameManagerSet<ObjectPoolType, Transform, float>> objectsTransform;
 
         private bool isGameOver;
         private bool gameStarted;
@@ -41,6 +41,7 @@ namespace My_Assets.Scrips.Game_module
             isGameOver = false;
             GameInputManager.Instance.EnablePlayerActionMap();
             UIManager.Instance.OnStartGame();
+            PlayerManager.Instance.OnStartGame();
             StartCoroutine(MoveObjects());
         }
 
@@ -61,8 +62,9 @@ namespace My_Assets.Scrips.Game_module
         {
             isGameOver = true;
             GameInputManager.Instance.DisablePlayerActionMap();
-            GameInventoryManager.Instance.OnEndGame();
-            UIManager.Instance.OnEndGame();
+            PlayerManager.Instance.OnEndGame();
+            GameSaveManager.Instance.OnEndGame();
+            StartCoroutine(DisplayUIDelay());
         }
         
         private void SpawnLanes()
@@ -136,16 +138,24 @@ namespace My_Assets.Scrips.Game_module
                     yield return null;
 
                 var time = Time.deltaTime;
-                foreach (var parent in objectsTransform.Select(set => set.GetValue()))
+                foreach (var set in objectsTransform)
                 {
+                    var parent = set.GetValue();
+                    var objectsSpeed = set.GetSecondValue();
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * time));
                 }
                 
-                GameInventoryManager.Instance.UpdateCurrentRunScore(time);
-                UIManager.Instance.GetPlayerUI().UpdateScore(GameInventoryManager.Instance.GetCurrentRunScore());
+                GameSaveManager.Instance.UpdateCurrentRunScore(time);
+                UIManager.Instance.GetPlayerUI().UpdateScore(GameSaveManager.Instance.GetCurrentRunScore());
 
                 yield return null;
             }
+        }
+
+        private IEnumerator DisplayUIDelay()
+        {
+            yield return new WaitForSeconds(displayUIDelay);
+            UIManager.Instance.OnEndGame();
         }
     }
 }

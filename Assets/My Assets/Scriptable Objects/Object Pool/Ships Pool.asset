@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdde2dd999f0459da2bc2bbce5a53e91, type: 3}
+  m_Name: Ships Pool
+  m_EditorClassIdentifier: 
+  type: 5
+  sizeOfPool: 15
+  spaceBetween: 350
+  batchSize: 5
+  sampleObjects:
+  - {fileID: 963720990949011456, guid: ebb7e27b2a1904e4cbd5c51a0aa93d5d, type: 3}
+  - {fileID: 4184215260415500912, guid: c0c3ffff5ff73e14bad99d317d41ddc1, type: 3}
+  - {fileID: 7614731377330844083, guid: c3c29b56c3d10064786823cc2bc58fa7, type: 3}

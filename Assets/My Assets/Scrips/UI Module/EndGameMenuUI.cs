@@ -12,8 +12,8 @@ namespace My_Assets.Scrips.UI_Module
 
         public void OnEndGame()
         {
-            SetScoreText(GameInventoryManager.Instance.NewHighScore() ? "New score record" : "Your score");
-            SetScoreValue(GameInventoryManager.Instance.GetCurrentRunScore());
+            SetScoreText(GameSaveManager.Instance.NewHighScore() ? "New score record" : "Your score");
+            SetScoreValue(GameSaveManager.Instance.GetCurrentRunScore());
         }
 
         private void SetScoreValue(float value)

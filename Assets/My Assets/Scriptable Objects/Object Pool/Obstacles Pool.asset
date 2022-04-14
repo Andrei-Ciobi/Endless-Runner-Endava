@@ -15,6 +15,7 @@ MonoBehaviour:
   type: 0
   sizeOfPool: 100
   spaceBetween: 25
-  batchSize: 20
+  batchSize: 60
   sampleObjects:
-  - {fileID: 1876626324744724927, guid: 8b59cf1d390c0bd4c86b755187308ada, type: 3}
+  - {fileID: 8162824247565071466, guid: 648aa536f17fe2146ad10cf5b30d3182, type: 3}
+  - {fileID: 4409878540537951203, guid: 1a21cc5045b508d46b456d8395fa63de, type: 3}

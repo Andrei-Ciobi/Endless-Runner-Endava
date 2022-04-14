@@ -13,14 +13,17 @@ namespace My_Assets.Scrips.Player_Module
         [SerializeField] private PlayerMovementData movementData;
 
         private Rigidbody playerRigidbody;
+        private Animator animator;
         private bool isMoveing;
         private bool groundedPlayer;
+        private bool isJumping;
         private Vector2 moveDirection;
         private float bonusJump;
 
         private void Awake()
         {
             playerRigidbody = GetComponent<Rigidbody>();
+            animator = GetComponentInChildren<Animator>();
         }
 
 
@@ -40,7 +43,7 @@ namespace My_Assets.Scrips.Player_Module
         {
             if(isMoveing)
                 return;
-            
+
             isMoveing = true;
             moveDirection = context.ReadValue<Vector2>();
 
@@ -55,8 +58,11 @@ namespace My_Assets.Scrips.Player_Module
         
         public void Jump(InputAction.CallbackContext context)
         {
-            if (!groundedPlayer)
+            if (isJumping)
                 return;
+            
+            animator.SetBool(PlayerState.IsJumping.ToString(), true);
+            isJumping = true;
             
             // Calculate the jump force required to reach the given height
             var jumpHeight = movementData.GetJumpHeight() + bonusJump;
@@ -64,6 +70,8 @@ namespace My_Assets.Scrips.Player_Module
             
             var direction = Vector3.up * jumpForce;
             playerRigidbody.AddForce(direction, ForceMode.VelocityChange);
+
+            StartCoroutine(ResetJump(movementData.GetResetJumpDelay()));
         }
 
         public void SetBonusJumpHeight(float value)
@@ -75,6 +83,12 @@ namespace My_Assets.Scrips.Player_Module
         {
             bonusJump = 0f;
         }
+
+        public Animator GetAnimator()
+        {
+            return animator;
+        }
+        
 
         private void CheckForGrounded()
         {
@@ -93,6 +107,22 @@ namespace My_Assets.Scrips.Player_Module
                 yield return new WaitForFixedUpdate();
             }
             isMoveing = false;
+        }
+
+        private IEnumerator ResetJump(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            while (isJumping && !GameManager.Instance.IsGameOver)
+            {
+                if (groundedPlayer)
+                {
+                    animator.SetBool(PlayerState.IsJumping.ToString(), false);
+                    isJumping = false;
+                }
+
+                yield return new WaitForFixedUpdate();
+            }
         }
 
 
