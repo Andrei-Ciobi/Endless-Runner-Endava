@@ -35,6 +35,9 @@ namespace My_Assets.Scrips.UI_Module
 
         public void OnEndGame()
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            
             endGameMenu.gameObject.SetActive(true);
             playerUI.gameObject.SetActive(false);
             endGameMenu.OnEndGame();
@@ -44,6 +47,8 @@ namespace My_Assets.Scrips.UI_Module
         public void OnStartGame()
         {
             playerUI.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         public void LoadGameScene()
@@ -63,6 +68,9 @@ namespace My_Assets.Scrips.UI_Module
 
         private void PauseGame()
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            
             isGamePaused = true;
             Time.timeScale = 0f;
             GameInputManager.Instance.DisablePlayerActionMap();
@@ -75,6 +83,9 @@ namespace My_Assets.Scrips.UI_Module
             GameInputManager.Instance.EnablePlayerActionMap();
             isGamePaused = false;
             Time.timeScale = 1f;
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

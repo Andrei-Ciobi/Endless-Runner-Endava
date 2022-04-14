@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff810fb9b6f9904d9d96091f0faa7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   pauseMenu: {fileID: 439802057}
   endGameMenu: {fileID: 1227363442}
   playerUI: {fileID: 636511870}
@@ -453,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b88311235c4207a2abf21d4219fbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   gameData: {fileID: 11400000, guid: 687b1ed77a7af0f46a9626a473ad6e71, type: 2}
 --- !u!1 &248803847
 GameObject:
@@ -2048,6 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66d70f1636f4269bb618822451c1ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   controller: {fileID: 1804374927}
 --- !u!1 &760842407
 GameObject:
@@ -2469,6 +2472,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 132.40201, y: -128.603, z: -61.169006}
+--- !u!1 &879721104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879721105}
+  - component: {fileID: 879721106}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &879721105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879721104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1074389088}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879721106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879721104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbad36491fe428b8734bfa1ac3a03e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  sounds:
+  - name: MusicTheme
+    clip: {fileID: 8300000, guid: c7dfdc73f33e4c24c89edfd4677f8a88, type: 3}
+    volume: 0.177
+    pitch: 1
+    loop: 1
 --- !u!1 &901981885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2545,6 +2598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768771d46e84e429532687852f56bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   faceCamera: {fileID: 326235420}
 --- !u!1 &941662687
 GameObject:
@@ -2854,6 +2908,7 @@ Transform:
   - {fileID: 184412787}
   - {fileID: 15963894}
   - {fileID: 906120560}
+  - {fileID: 879721105}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3215,6 +3270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f5c887df244bb58612a25619ca564d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   poolDataList:
   - key: {fileID: 2074429267}
     value: {fileID: 11400000, guid: 67a38c840dfe8f446bb643b04868cea2, type: 2}
@@ -3869,6 +3925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda86256eb7240f3a399b8e346229688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
 --- !u!1 &1352387936
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,6 +4834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4025244fa84dcd9b756d52e6293001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   displayUIDelay: 0.674
   numberOfLanes: 3
   objectsTransform:
