@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using My_Assets.Scrips.Camera_Module;
 using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.ObjectPool_Module;
 using My_Assets.Scrips.Player_Module;
@@ -39,6 +40,7 @@ namespace My_Assets.Scrips.Game_module
             
             gameStarted = true;
             isGameOver = false;
+            CameraManager.Instance.OnStartGame();
             GameInputManager.Instance.EnablePlayerActionMap();
             UIManager.Instance.OnStartGame();
             PlayerManager.Instance.OnStartGame();

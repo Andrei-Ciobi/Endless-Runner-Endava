@@ -1,6 +1,7 @@
 using My_Assets.Scrips.Input_Module;
 using My_Assets.Scrips.Utyles_Module;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace My_Assets.Scrips.UI_Module
 {
@@ -15,6 +16,7 @@ namespace My_Assets.Scrips.UI_Module
         private void Awake()
         {
             InitializeMonoSingleton();
+            Time.timeScale = 1f;
         }
 
         public void SwitchPauseGame()
@@ -44,6 +46,16 @@ namespace My_Assets.Scrips.UI_Module
             playerUI.gameObject.SetActive(true);
         }
 
+        public void LoadGameScene()
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
+
+        public void LoadMenuScene()
+        {
+            SceneManager.LoadSceneAsync(0);
+        }
+
         public PlayerUI GetPlayerUI()
         {
             return playerUI;
@@ -56,6 +68,7 @@ namespace My_Assets.Scrips.UI_Module
             GameInputManager.Instance.DisablePlayerActionMap();
             
         }
+        
 
         private void UnpauseGame()
         {
