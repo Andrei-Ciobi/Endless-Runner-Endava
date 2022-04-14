@@ -47,7 +47,7 @@ namespace My_Assets.Scrips.Input_Module
         {
             inputAction.Player.Movement.performed += PlayerManager.Instance.GetController().Movement;
             inputAction.Player.Jump.performed += PlayerManager.Instance.GetController().Jump;
-            inputAction.UI.LeftClick.performed += _ => GameManager.Instance.StartGame();
+            // inputAction.UI.LeftClick.performed += _ => GameManager.Instance.StartGame();
             inputAction.UI.MenuButton.performed += _ => UIManager.Instance.SwitchPauseGame();
         }
         
