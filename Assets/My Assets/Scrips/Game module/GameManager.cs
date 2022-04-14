@@ -12,7 +12,8 @@ namespace My_Assets.Scrips.Game_module
     public class GameManager : MonoSingleton<GameManager>
     {
         public bool IsGameOver => isGameOver;
-        
+
+        [SerializeField] [Range(.2f, 1.2f)] private float displayUIDelay;
         [SerializeField] private int numberOfLanes;
         [SerializeField] private List<GameManagerSet<ObjectPoolType, Transform, float>> objectsTransform;
 
@@ -62,8 +63,8 @@ namespace My_Assets.Scrips.Game_module
             isGameOver = true;
             GameInputManager.Instance.DisablePlayerActionMap();
             PlayerManager.Instance.OnEndGame();
-            GameInventoryManager.Instance.OnEndGame();
-            UIManager.Instance.OnEndGame();
+            GameSaveManager.Instance.OnEndGame();
+            StartCoroutine(DisplayUIDelay());
         }
         
         private void SpawnLanes()
@@ -144,11 +145,17 @@ namespace My_Assets.Scrips.Game_module
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * time));
                 }
                 
-                GameInventoryManager.Instance.UpdateCurrentRunScore(time);
-                UIManager.Instance.GetPlayerUI().UpdateScore(GameInventoryManager.Instance.GetCurrentRunScore());
+                GameSaveManager.Instance.UpdateCurrentRunScore(time);
+                UIManager.Instance.GetPlayerUI().UpdateScore(GameSaveManager.Instance.GetCurrentRunScore());
 
                 yield return null;
             }
+        }
+
+        private IEnumerator DisplayUIDelay()
+        {
+            yield return new WaitForSeconds(displayUIDelay);
+            UIManager.Instance.OnEndGame();
         }
     }
 }

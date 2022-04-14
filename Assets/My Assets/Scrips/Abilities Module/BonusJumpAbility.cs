@@ -20,7 +20,7 @@ namespace My_Assets.Scrips.Abilities_Module
         private void Awake()
         {
             InitializeBaseAbility();
-            meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer = GetComponentInChildren<MeshRenderer>();
         }
 
         protected override void PerformAbility()

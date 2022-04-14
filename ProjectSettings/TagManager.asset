@@ -10,6 +10,7 @@ TagManager:
   - Coins
   - Ability
   - Ships
+  - HorizontalShips
   layers:
   - Default
   - TransparentFX

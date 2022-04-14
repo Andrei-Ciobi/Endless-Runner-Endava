@@ -9,6 +9,7 @@
         Lanes = 3,
         StartLanes = 4,
         Ships = 5,
+        HorizontalShips =6,
     }
 
     public enum PlayerState
