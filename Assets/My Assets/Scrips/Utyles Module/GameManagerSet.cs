@@ -3,13 +3,19 @@
 namespace My_Assets.Scrips.Utyles_Module
 {
     [System.Serializable]
-    public class GameManagerSet<TK, TV, TSV> : SerializableSet<TK, TV>
+    public class GameManagerSet<TK, TV> : SerializableSet<TK, TV>
     {
-        [SerializeField] private TSV secondValue;
+        [SerializeField] private float speed;
+        [SerializeField] private bool useScaleSpeed;
 
-        public TSV GetSecondValue()
+        public float GetSpeed()
         {
-            return secondValue;
+            return speed;
+        }
+
+        public bool UseScaleSpeed()
+        {
+            return useScaleSpeed;
         }
     }
 }

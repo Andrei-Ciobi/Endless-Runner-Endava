@@ -18,5 +18,10 @@ namespace My_Assets.Scrips.Camera_Module
         {
             faceCamera.Priority = 9;
         }
+        
+        public void OnEndGame()
+        {
+            faceCamera.Priority = 11;
+        }
     }
 }

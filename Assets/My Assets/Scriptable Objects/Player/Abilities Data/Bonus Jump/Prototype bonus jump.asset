@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d071de584939e4282183c235df83e8, type: 3}
   m_Name: Prototype bonus jump
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 3
   jumpHeight: 5

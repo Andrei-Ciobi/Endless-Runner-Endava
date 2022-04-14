@@ -16,7 +16,7 @@ namespace My_Assets.Scrips.Game_module
 
         [SerializeField] [Range(.2f, 1.2f)] private float displayUIDelay;
         [SerializeField] private int numberOfLanes;
-        [SerializeField] private List<GameManagerSet<ObjectPoolType, Transform, float>> objectsTransform;
+        [SerializeField] private List<GameManagerSet<ObjectPoolType, Transform>> objectsTransform;
 
         private bool isGameOver;
         private bool gameStarted;
@@ -140,10 +140,13 @@ namespace My_Assets.Scrips.Game_module
                     yield return null;
 
                 var time = Time.deltaTime;
+                var speedScale = GameSaveManager.Instance.GetCurrentRunScore() / 50;
                 foreach (var set in objectsTransform)
                 {
                     var parent = set.GetValue();
-                    var objectsSpeed = set.GetSecondValue();
+                    var objectsSpeed = set.GetSpeed();
+                    objectsSpeed += set.UseScaleSpeed() ? speedScale : 0f;
+
                     parent.transform.Translate(-Vector3.forward * (objectsSpeed * time));
                 }
                 
