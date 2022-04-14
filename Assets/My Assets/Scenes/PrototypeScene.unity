@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 184412787}
   - component: {fileID: 184412788}
   m_Layer: 0
-  m_Name: Inventory Manager
+  m_Name: Save Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,8 +409,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: 687b1ed77a7af0f46a9626a473ad6e71, type: 2}
-  currentRunScore: 0
-  currentRunCoins: 0
 --- !u!1 &248803847
 GameObject:
   m_ObjectHideFlags: 0
