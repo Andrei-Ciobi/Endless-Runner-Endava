@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   sizeOfPool: 60
-  spaceBetween: 15
+  spaceBetween: 20
   batchSize: 25
   sampleObjects:
   - {fileID: 7043643367168188485, guid: 8010af825e90cad4b8d6a48c559f5330, type: 3}
